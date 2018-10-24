@@ -1,0 +1,32 @@
+<%= form_with(model: list, local: true) do |form| %>
+  <% if list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+      <% list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <%= link_to 'New Item', new_item_path(list_id: @list.id) %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= render partial: 'items/form', locals: { item: @list.items.new, remote: true, list_id: @list.id } %>
+
+<div id="items_wrapper">
+  <% @list.items.each do |item| %>
+    <%= render partial: 'items/show', locals: {item: item} %>
+  <% end %>
+</div>
