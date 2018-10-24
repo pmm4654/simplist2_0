@@ -30,6 +30,14 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+RspecApiDocumentation.configure do |config|
+  config.format = [:json, :combined_text, :html]
+  config.curl_host = 'http://localhost:3000'
+  config.api_name = "Simplist"
+  config.api_explanation = "API for aggregating your list to share!"
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
