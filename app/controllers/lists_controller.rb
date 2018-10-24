@@ -1,4 +1,6 @@
 class ListsController < ApplicationController
+  include ExceptionHandler
+  include Response
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   # GET /lists
@@ -43,7 +45,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
-        format.json { render :show, status: :ok, location: @list }
+        format.json { render :show, status: :no_content, location: @list }
       else
         format.html { render :edit }
         format.json { render json: @list.errors, status: :unprocessable_entity }

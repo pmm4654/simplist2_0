@@ -14,7 +14,7 @@ resource "Items" do
   end
 
   get "lists/:list_id/items" do
-    parameter :list_id, "Current page of orders"
+    parameter :list_id, "ID of the list that holds the items"
     let(:list_id) { list.id }
 
     example "Listing items" do
@@ -24,6 +24,10 @@ resource "Items" do
   end
 
   get "lists/:list_id/items/:id" do
+    parameter :list_id, "ID of the list that holds the items"
+    parameter :id, "ID of the item in the list"
+
+    let(:list_id) { list.id }
     let(:id) { item.id }
 
     example "Getting a specific item" do
@@ -34,7 +38,11 @@ resource "Items" do
   end
 
   get "lists/:list_id/items/:id" do
-    let(:id) { 100 }
+    parameter :list_id, "ID of the list that holds the items"
+    parameter :id, "ID of the item in the list"
+    
+    let(:list_id) { list.id }
+    let(:id) { 127839 }
 
     example "Getting a specific item that doesn't exist" do
       do_request
@@ -44,17 +52,19 @@ resource "Items" do
   end 
 
   post "lists/:list_id/items" do
+    parameter :list_id, "ID of the list that holds the items" # TODO: scope to item
     parameter :title, "Title of item", :required => true
 
     response_field :title, "Title of item", "Type" => "String"
 
-    let(:title) { "item 1" }
+    let!(:title) { "item 1" }
+    let!(:list_id) { list.id }
+
 
     let(:raw_post) { params.to_json }
 
     example "Creating an item" do
-      do_request
-
+      do_request(item: {title: title, list_id: list_id})
       expect(json_parsed_response['title']).to eq('item 1')
       expect(status).to eq(201)
     end

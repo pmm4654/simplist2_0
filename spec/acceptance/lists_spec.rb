@@ -8,8 +8,14 @@ resource "lists" do
   # header "Content-Type", "application/json"
   # header "Authorization", token_generator(user.id)
 
-  let(:list) { List.create(:title => "Old title", :paid => true) }
+  let(:list) { List.create(:title => "Old title") }
   let(:user) { create(:user) }
+
+  before do
+    header "Accept", "application/json"
+    header "Content-Type", "application/json"
+    # header "Authorization", token_generator(user.id)
+  end
 
   get "/lists" do
 
@@ -22,10 +28,10 @@ resource "lists" do
     example "Getting a list of lists" do
       header "Accept", "application/json"
       header "Content-Type", "application/json"
-      header "Authorization", token_generator(user.id)
-      do_request 
+      # header "Authorization", token_generator(user.id)
+      do_request
 
-      expect(response_body).to eq(List.all.to_json)
+      expect(response_body).to eq(JSON.parse(List.all.to_json).each{|a| a.delete('user_id')}.to_json)
       expect(status).to eq(200)
     end
   end
@@ -47,6 +53,7 @@ resource "lists" do
     let(:raw_post) { params.to_json }
 
     example "Creating an list" do
+      do_request(list: {title: title})
       explanation "First, create an list, then make a later request to get it back"
 
       list = JSON.parse(response_body)
@@ -64,7 +71,8 @@ resource "lists" do
     let(:id) { list.id }
 
     example "Getting a specific list" do
-      expect(response_body).to eq(list.to_json)
+      do_request
+      expect(response_body).to eq(JSON.parse(list.to_json).except('user_id').to_json)
       expect(status).to eq(200)
     end
   end
@@ -78,6 +86,7 @@ resource "lists" do
     let(:raw_post) { params.to_json }
 
     example "Updating an list" do
+      do_request
       expect(status).to eq(204)
     end
   end
@@ -86,6 +95,7 @@ resource "lists" do
     let(:id) { list.id }
 
     example "Deleting an list" do
+      do_request
       expect(status).to eq(204)
     end
   end
