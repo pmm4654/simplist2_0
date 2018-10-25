@@ -18,8 +18,8 @@ development:
   encoding: unicode
   database: simplist2_0_development
   pool:     5
-  username: simplist2_0
-  password:
+  username: pguser
+  password: password
   template: template0
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -46,8 +46,8 @@ test:
   encoding: unicode
   database: simplist2_0_test
   pool:     5
-  username: simplist2_0
-  password:
+  username: pguser
+  password: password
   template: template0
 
 production:
