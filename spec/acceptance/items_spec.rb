@@ -3,7 +3,7 @@ require 'rspec_api_documentation/dsl'
 
 resource "Items" do
   let(:user) { create(:user) }
-  let(:list) { create(:list) }
+  let(:list) { create(:list, user: user) }
   let!(:items) { create_list(:item, 10, list: list) }  
   let(:item) { items.first }
 
@@ -48,41 +48,6 @@ resource "Items" do
       do_request
       expect(status).to eq(404)
       expect(response_body).to match(/Couldn't find Item/)      
-    end
-  end 
-
-  post "lists/:list_id/items" do
-    parameter :list_id, "ID of the list that holds the items" # TODO: scope to item
-    parameter :title, "Title of item", :required => true
-
-    response_field :title, "Title of item", "Type" => "String"
-
-    let!(:title) { "item 1" }
-    let!(:list_id) { list.id }
-
-
-    let(:raw_post) { params.to_json }
-
-    example "Creating an item" do
-      do_request(item: {title: title, list_id: list_id})
-      expect(json_parsed_response['title']).to eq('item 1')
-      expect(status).to eq(201)
-    end
-  end
-
-  put "lists/:list_id/items/:id" do
-    parameter :title, "Title of item"
-
-    let(:id) { item.id }
-    let(:title) { "Updated Title" }
-
-    let(:raw_post) { params.to_json }
-
-    example "Updating an item" do
-      do_request
-
-      expect(status).to eq(204)
-      expect(item.reload.title).to eq("Updated Title")
     end
   end 
 

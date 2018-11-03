@@ -1,5 +1,5 @@
-module Api::V1
-  class ListsController < ApplicationController
+module Api
+  class V1::ListsController < V1::ApplicationController
     include ExceptionHandler
     include Response
     before_action :set_list, only: [:show, :edit, :update, :destroy]
@@ -27,7 +27,6 @@ module Api::V1
     # POST /lists
     # POST /lists.json
     def create
-      byebug
       @list = List.new(list_params)
 
       respond_to do |format|
