@@ -31,6 +31,13 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 RspecApiDocumentation.configure do |config|
   config.format = [:json, :combined_text, :html]
   config.curl_host = 'http://localhost:3000'
