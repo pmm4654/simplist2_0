@@ -19,6 +19,7 @@ resource "Items" do
 
     example "Listing items" do
       do_request
+      expect(json_parsed_response.count).to eq(10)
       expect(status).to eq(200)
     end
   end
