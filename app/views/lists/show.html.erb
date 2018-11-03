@@ -5,5 +5,11 @@
   <%= @list.title %>
 </p>
 
+<%= render 'items/form', remote: true %>
+
+<ul id="items_wrapper">  
+  <%= render @list.items %>
+</ul>
+
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>

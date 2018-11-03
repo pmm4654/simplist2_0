@@ -16,14 +16,16 @@
     <%= form.text_field :title %>
   </div>
 
-  <%= link_to 'New Item', new_item_path(list_id: @list.id) %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
 
-<%= render partial: 'items/form', locals: { item: @list.items.new, remote: true, list_id: @list.id } %>
+<% unless @list.new_record? %>
+  <%= link_to 'New Item', new_list_item_path(list_id: @list.id) %>
+  <%= render partial: 'items/form', locals: { item: @list.items.new, remote: true, list_id: @list.id } %>
+<% end %>
 
 <div id="items_wrapper">
   <% @list.items.each do |item| %>

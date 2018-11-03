@@ -17,7 +17,7 @@ resource "lists" do
     # header "Authorization", token_generator(user.id)
   end
 
-  get "/lists" do
+  get "api/v1/lists" do
 
     before do
       2.times do |i|
@@ -67,7 +67,7 @@ resource "lists" do
     end
   end
 
-  get "/lists/:id" do
+  get "api/v1/lists/:id" do
     let(:id) { list.id }
 
     example "Getting a specific list" do

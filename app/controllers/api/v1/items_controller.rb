@@ -1,5 +1,5 @@
-module Api::V1
-  class ItemsController < V1::ApplicationController
+module Api
+  class V1::ItemsController < ApplicationController
     include ExceptionHandler
     include Response
     before_action :set_item, only: [:show, :edit, :update, :destroy]

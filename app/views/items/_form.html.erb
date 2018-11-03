@@ -1,23 +1,11 @@
-<%= form_with(model: item, remote: remote) do |form| %>
-  <% if item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
-
-      <ul>
-      <% item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for([@list, @list.items.new], remote: remote) do |form| %>
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.hidden_field :list_id, value: list_id %>
+    <%= form.hidden_field :list_id, value: @list.id %>
   </div>
 
   <div class="actions">

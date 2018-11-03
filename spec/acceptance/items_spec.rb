@@ -13,7 +13,7 @@ resource "Items" do
     # header "Authorization", token_generator(user.id)
   end
 
-  get "lists/:list_id/items" do
+  get "api/v1/lists/:list_id/items" do
     parameter :list_id, "ID of the list that holds the items"
     let(:list_id) { list.id }
 
@@ -23,7 +23,7 @@ resource "Items" do
     end
   end
 
-  get "lists/:list_id/items/:id" do
+  get "api/v1/lists/:list_id/items/:id" do
     parameter :list_id, "ID of the list that holds the items"
     parameter :id, "ID of the item in the list"
 
@@ -37,7 +37,7 @@ resource "Items" do
     end
   end
 
-  get "lists/:list_id/items/:id" do
+  get "api/v1/lists/:list_id/items/:id" do
     parameter :list_id, "ID of the list that holds the items"
     parameter :id, "ID of the item in the list"
     
