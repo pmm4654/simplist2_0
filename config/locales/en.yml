@@ -30,4 +30,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  edit: 'Edit'
+  view: 'View'
+  registered_sites:
+    registered_site: 'Registered Site'
+    site_url: 'Site URL'
+    api_secret: 'API Secret'
