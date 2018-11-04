@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181103175253) do
+ActiveRecord::Schema.define(version: 20181104171428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20181103175253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "registered_site_id"
+    t.index ["registered_site_id"], name: "index_lists_on_registered_site_id"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 20181103175253) do
   end
 
   add_foreign_key "items", "lists"
+  add_foreign_key "lists", "registered_sites"
   add_foreign_key "lists", "users"
   add_foreign_key "registered_sites", "users"
 end

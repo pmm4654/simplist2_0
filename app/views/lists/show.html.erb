@@ -5,6 +5,10 @@
   <%= @list.title %>
 </p>
 
+<p>
+  <%= render 'form_add_to_registered_site', list: @list %>
+</p>
+
 <%= render 'items/form', remote: true %>
 
 <ul id="items_wrapper">  
