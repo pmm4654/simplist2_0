@@ -80,5 +80,6 @@ pickle-email-*.html
 .env
 .powenv
 
+.byebug_history
 # tilde files are usually backup files from a text editor
 *~

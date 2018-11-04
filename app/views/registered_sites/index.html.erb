@@ -1,0 +1,16 @@
+Registered Sites
+<table>
+  <thead>
+    <th><%= I18n.t('registered_sites.site_url') %></th>
+    <th></th>
+  </thead>
+  <tbody>
+  <% @registered_sites.each do |registered_site| %>
+    <tr>
+      <td><%= registered_site.site_url %></td>
+      <td><%= link_to I18n.t('view'), registered_site_path(registered_site) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>

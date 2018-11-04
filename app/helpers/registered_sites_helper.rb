@@ -1,0 +1,2 @@
+module RegisteredSitesHelper
+end

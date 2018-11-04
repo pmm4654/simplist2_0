@@ -1,0 +1,25 @@
+<%= form_with(model: registered_site, local: true) do |form| %>
+  <% if registered_site.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(registered_site.errors.count, "error") %> prohibited this registered_site from being saved:</h2>
+
+      <ul>
+      <% registered_site.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :site_url %>
+    <%= form.text_field :site_url %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+

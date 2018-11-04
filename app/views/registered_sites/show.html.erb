@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= I18n.t('registered_sites.registered_site') %></strong>
+  <p>
+    <%= I18n.t('registered_sites.site_url') %>:
+    <%= @registered_site.site_url %>
+  </p> 
+  <p>
+    <%= I18n.t('registered_sites.api_secret') %>: 
+    <%= @registered_site.api_secret %>  
+  </p>
+</p>
+
+
+<%= link_to 'Edit', edit_registered_site_path(@registered_site) %> |
+<%= link_to 'Back', registered_sites_path %>
