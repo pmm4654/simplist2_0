@@ -10,7 +10,7 @@ Author: SAEROX
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Elisyam - Forms Basic</title>
+        <title>Elisyam - Blank Page</title>
         <meta name="description" content="Elisyam is a Web App and Admin Dashboard Template built with Bootstrap 4">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Google Fonts -->
@@ -24,12 +24,14 @@ Author: SAEROX
           });
         </script>
         <!-- Favicon -->
+        <%= cache 'head_scripts' do %>
         <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
         <!-- Stylesheet -->
-        <%= stylesheet_link_tag 'application', media: 'all' %>
-        <%= javascript_include_tag 'application' %>
+        <%= stylesheet_link_tag 'application', media: 'all' %>   
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">   
+        <% end %>
         <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -46,7 +48,7 @@ Author: SAEROX
         <div class="page">
             <!-- Begin Header -->
             <header class="header">
-                <nav class="navbar fixed-top">       
+                <nav class="navbar fixed-top">         
                     <!-- Begin Search Box-->
                     <div class="search-box">
                         <button class="dismiss"><i class="ion-close-round"></i></button>
@@ -198,27 +200,30 @@ Author: SAEROX
                     <nav class="side-navbar box-scroll sidebar-scroll">
                         <!-- Begin Main Navigation -->
                         <ul class="list-unstyled">
-                            <li><a href="#dropdown-db" aria-expanded="false" data-toggle="collapse"><i class="la la-columns"></i><span>Dashboard</span></a>
-                                <ul id="dropdown-db" class="collapse list-unstyled pt-0">
-                                    <li><a href="db-default.html">Default</a></li>
-                                    <li><a href="db-clean.html">Clean</a></li>
-                                    <li><a href="db-compact.html">Compact</a></li>
-                                    <li><a href="db-modern.html">Modern</a></li>
-                                    <li><a href="db-social.html">Social</a></li>
-                                    <li><a href="db-smarthome.html">Smarthome</a></li>
-                                    <li><a href="db-all.html">All</a></li>
+                            <li><a href="javascript:void(0);"><i class="la la-at"></i><span>Simple Link</span></a></li>
+                            <li><a href="#dropdown" aria-expanded="false" data-toggle="collapse"><i class="la la-puzzle-piece"></i><span>Dropdown</span></a>
+                                <ul id="dropdown" class="collapse list-unstyled pt-0">
+                                    <li><a href="javascript:void(0);">Link</a></li>
+                                    <li><a href="javascript:void(0);">Link</a></li>
+                                    <li><a href="javascript:void(0);">Link</a></li>
+                                    <li><a href="javascript:void(0);">Link</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#dropdown-app" aria-expanded="false" data-toggle="collapse"><i class="la la-puzzle-piece"></i><span>Applications</span></a>
-                                <ul id="dropdown-app" class="collapse list-unstyled pt-0">
-                                    <li><a href="app-calendar.html">Calendar</a></li>
-                                    <li><a href="app-chat.html">Chat</a></li>
-                                    <li><a href="app-mail.html">Mail</a></li>
-                                    <li><a href="app-contact.html">Contact</a></li>
+                        </ul>
+                        <span class="heading">Title</span>
+                        <ul class="list-unstyled">
+                            <li class="active"><a href="#dropdown-db" aria-expanded="true" data-toggle="collapse"><i class="la la-columns"></i><span>Active</span></a>
+                                <ul id="dropdown-db" class="collapse list-unstyled show pt-0">
+                                    <li><a class="active" href="javascript:void(0);">Active</a></li>
+                                    <li><a href="javascript:void(0);">Link</a></li>
+                                    <li><a href="javascript:void(0);">Link</a></li>
+                                    <li><a href="javascript:void(0);">Link</a></li>
+                                    <li><a href="javascript:void(0);">Link</a></li>
                                 </ul>
                             </li>
-                            <li><a href="components-widgets.html"><i class="la la-spinner"></i><span>Widgets</span></a></li>
-                        
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li><a href="db-all.html"><i class="la la-angle-left"></i><span>Back To Elisyam</span></a></li>
                         </ul>
                         <!-- End Main Navigation -->
                     </nav>
@@ -230,19 +235,30 @@ Author: SAEROX
                         <!-- Begin Page Header-->
                         <div class="row">
                             <div class="page-header">
-                              <div class="d-flex align-items-center">
-                                  <h2 class="page-header-title">Lists</h2>
-                                  <div>
-                                  <ul class="breadcrumb">
-                                      <li class="breadcrumb-item"><a href="db-default.html"><i class="ti ti-home"></i></a></li>
-                                      <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                      <li class="breadcrumb-item active">Lists</li>
-                                  </ul>
-                                  </div>
-                              </div>
+                                <div class="d-flex align-items-center">
+                                    <h2 class="page-header-title">Blank Page</h2>
+                                    <div>
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="db-all.html"><i class="ti ti-home"></i></a></li>
+                                            <li class="breadcrumb-item active">Blank</li>
+                                        </ul>
+                                    </div>                              
+                                </div>
                             </div>
                         </div>
                         <!-- End Page Header -->
+                        <!-- Begin Row -->
+                        <div class="row flex-row">
+                            <div class="col-xl-12 col-12">
+                                <div class="widget has-shadow">
+                                    <div class="widget-body">
+                                        <p class="text-primary mt-2 mb-2">Play with Elisyam :)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Row -->
+
                         <div class="row flex-row">
                             <div class="col-12">
                                 <!-- Form -->
@@ -264,15 +280,6 @@ Author: SAEROX
                                             </div>  
                                             <div class="table-responsive">
                                                 <table id="example1" class="table mb-0">
-<!--                                                     <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Firstname</th>
-                                                            <th>Lastname</th>
-                                                            <th>Email</th>
-                                                            <th>Country</th>
-                                                        </tr>
-                                                    </thead> -->
                                                     <tbody>
                                                         <tr>
                                                             <td style="width:10px;">1</td>
@@ -307,11 +314,10 @@ Author: SAEROX
                                 <!-- End Form -->
                             </div>
                         </div>
-                        <!-- End Row -->
                     </div>
                     <!-- End Container -->
                     <!-- Begin Page Footer-->
-                    <footer class="main-footer">
+                    <footer class="main-footer fixed-footer">
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-center justify-content-xl-start justify-content-lg-start justify-content-md-start justify-content-center">
                                 <p class="text-gradient-02">Design By Saerox</p>
@@ -599,16 +605,23 @@ Author: SAEROX
                     </div>
                     <!-- End Offcanvas Sidebar -->
                 </div>
+                <!-- End Content -->
             </div>
             <!-- End Page Content -->
         </div>
         <!-- Begin Vendor Js -->
+        <%= cache 'elisyam/js' do %>
+<!--         <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script> -->
+        <%= javascript_include_tag 'application' %>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <!-- End Vendor Js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+        <% end %>
         <!-- Begin Page Vendor Js -->
-
         <!-- End Page Vendor Js -->
-        <!-- Begin Page Snippets -->
-
-        <!-- End Page Snippets -->
     </body>
 </html>
