@@ -1,11 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @list.title %></h1>
 
-<p>
-  <strong>List name:</strong>
-  <%= @list.title %>
-</p>
-
-<% if false %>
+<% unless @list.new_record? %>
 <p>
   <%= render 'form_add_to_registered_site', list: @list %>
 </p>
@@ -13,13 +8,13 @@
 
 <%= render 'items/form', remote: true %>
 
-<div id="items_wrapper" class="row" style="height: 40vh; overflow: auto;">
+<div id="items_wrapper" class="row">
   <table id="items_table" >
     <thead>
       <th>Item</th>
     </thead>
     <tbody id="items_table_body">
-      <%= render @list.items %>
+      <%= render @list.items.order('created_at desc') %>
     </tbody>
   </table>
 </div>

@@ -1,6 +1,6 @@
 <%= form_for([@list, @list.items.new], remote: remote) do |form| %>
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label 'Add Item' %>
     <%= form.text_field :title %>
   </div>
 
@@ -8,7 +8,5 @@
     <%= form.hidden_field :list_id, value: @list.id %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
 <% end %>

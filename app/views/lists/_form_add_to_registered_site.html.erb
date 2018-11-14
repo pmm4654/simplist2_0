@@ -11,13 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :registered_site_id %>
-    <%= form.collection_select :registered_site_id, current_user.registered_sites,:id,:site_url %>
-  </div>
+  <a href="#" id="show_registered_sites">Register list a site <%= currently_registered_to(list) %></a>
 
-  <div class="actions">
-    <%= form.submit I18n.t('lists.register_with_site') %>
+  <div id="registered_site_dropdown" class="hidden">
+    
+    <div class="field">
+      <%= form.label :registered_site_id %>
+      <%= form.collection_select :registered_site_id, current_user.registered_sites,:id,:site_url %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit I18n.t('lists.register_with_site') %>
+    </div>
+
   </div>
 
 <% end %>
+
+
+<script>
+ register_sites_toggler()
+</script>
