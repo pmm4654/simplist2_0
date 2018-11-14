@@ -5,15 +5,21 @@
   <%= @list.title %>
 </p>
 
+<% if false %>
 <p>
   <%= render 'form_add_to_registered_site', list: @list %>
 </p>
+<% end %>
 
 <%= render 'items/form', remote: true %>
 
-<ul id="items_wrapper">  
-  <%= render @list.items %>
-</ul>
-
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<div id="items_wrapper" class="row" style="height: 40vh; overflow: auto;">
+  <table id="items_table" >
+    <thead>
+      <th>Item</th>
+    </thead>
+    <tbody id="items_table_body">
+      <%= render @list.items %>
+    </tbody>
+  </table>
+</div>
