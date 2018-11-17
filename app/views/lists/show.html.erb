@@ -14,14 +14,19 @@
 <%= render 'items/form', remote: true %>
 
 <div id="items_wrapper" class="row" style="height: 40vh; overflow: auto;">
-  <ul id="itemsList">
-    <%= render @list.items %>
+  <table id="items_table">
+    <thead>
+      <th>Item</th>
+    </thead>
+    <tbody id="items_table_body">
+      <%= render @list.items %>
+    </tbody>
   </ul>
 </div>
 
 <script>
   // ctrl-f options: https://github.com/RubaXa/Sortable
-  Sortable.create(itemsList, {
+  Sortable.create(items_table_body, {
     animation: 25,
     handle: ".drag-handle",
     onUpdate: function(event) {
