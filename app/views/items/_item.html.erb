@@ -1,5 +1,3 @@
 <% unless item.new_record? %>
-<tr>
-  <td><%= item.title %></td>
-</tr>
+<li><span class="drag-handle">☰</span><%= item.title %></li>
 <% end %>

@@ -14,12 +14,23 @@
 <%= render 'items/form', remote: true %>
 
 <div id="items_wrapper" class="row" style="height: 40vh; overflow: auto;">
-  <table id="items_table" >
-    <thead>
-      <th>Item</th>
-    </thead>
-    <tbody id="items_table_body">
-      <%= render @list.items %>
-    </tbody>
-  </table>
+  <ul id="itemsList">
+    <%= render @list.items %>
+  </ul>
 </div>
+
+<script>
+  // ctrl-f options: https://github.com/RubaXa/Sortable
+  Sortable.create(itemsList, {
+    animation: 25,
+    handle: ".drag-handle",
+    onUpdate: function(event) {
+      // this is where we have to handle updating position in backend
+      console.log(event.item);
+      console.log(event.to);
+      console.log(event.from);
+      console.log(event.oldIndex);
+      console.log(event.newIndex);
+    }
+  });
+</script>
