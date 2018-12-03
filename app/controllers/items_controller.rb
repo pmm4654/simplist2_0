@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
 
   def reorder
     @item.insert_at(params[:insert_at].to_i)
-    # render nothing: true, status: 200, content_type: 'text/html'
   end
 
   # POST /items
