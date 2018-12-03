@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   include ExceptionHandler
   include Response
   before_action :authenticate_user!
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :reorder]
 
   # GET /items
   # GET /items.json
@@ -22,6 +22,10 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+  end
+
+  def reorder
+    @item.insert_at(params[:insert_at].to_i)
   end
 
   # POST /items
@@ -59,10 +63,6 @@ class ItemsController < ApplicationController
   # DELETE /items/1.json
   def destroy
     @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

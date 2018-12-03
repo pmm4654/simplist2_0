@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   resources :registered_sites
 
   resources :lists do
-    resources :items
+    resources :items do
+      member do
+        post :reorder
+      end
+    end
   end
 
   post 'auth/login', to: 'authentication#authenticate'

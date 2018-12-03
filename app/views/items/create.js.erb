@@ -1,2 +1,2 @@
-$('#items_table_body').append('<%= j render partial: 'items/item', locals: { item: @item } %>');
+$('#items_table_body').html('<%= j render @item.list.items.ordered %>');
 $('#item_title').val('')
