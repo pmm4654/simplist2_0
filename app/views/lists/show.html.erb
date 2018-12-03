@@ -14,14 +14,14 @@
 <%= render 'items/form', remote: true %>
 
 <div id="items_wrapper" class="row" style="height: 40vh; overflow: auto;">
-  <table id="items_table">
+  <table id="items_table" style="padding-right: 20px;">
     <thead>
       <th>Item</th>
     </thead>
     <tbody id="items_table_body">
-      <%= render @list.items %>
+      <%= render @list.items.ordered %>
     </tbody>
-  </ul>
+  </table>
 </div>
 
 <script>
@@ -30,12 +30,20 @@
     animation: 25,
     handle: ".drag-handle",
     onUpdate: function(event) {
+      var list_id = event.item.dataset.listId;
+      data = {insert_at: event.newIndex + 1};
+      $.post(reorder_item_url(list_id), data);
       // this is where we have to handle updating position in backend
-      console.log(event.item);
-      console.log(event.to);
-      console.log(event.from);
-      console.log(event.oldIndex);
-      console.log(event.newIndex);
+      // submit_item_reorder(event.to)
+      // console.log(event.item);
+      // console.log(event.to);
+      // console.log(event.from);
+      // console.log(event.oldIndex);
+      // console.log(event.newIndex);
     }
   });
+
+  function reorder_item_url(id) {
+    return '/lists/<%= @list.id %>/items/' + id + '/reorder'
+  }
 </script>

@@ -1,5 +1,8 @@
 <% unless item.new_record? %>
-<tr>
-  <td><span class="drag-handle">☰</span><%= item.title %></td>
+<tr data-list-id="<%= item.id %>">
+  <td>
+    <span class="drag-handle">☰</span><%= item.title %>
+    <%= link_to 'x', list_item_path(list_id: item.list_id, id: item.id), remote: true, method: :delete, style: 'float: right;' %>
+  </td>
 </tr>
 <% end %>
